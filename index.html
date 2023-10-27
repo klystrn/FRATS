@@ -7,18 +7,24 @@
     <link rel="stylesheet" href="css/product.css">
 </head>
 <body>
-    <h1>FRATS</h1>
+    <h1><b>FRATS</b></h1>
+    <select id="videoSelect"></select>
+    <br>
+    <button id="startCameraButton">Start Camera</button>
+    <br>
     Video Tag
     <script src="js/webcam.js"></script>
-    <br/>
-        <div class="camera">
-            <video id="video">Video stream not available.</video>
-            <button id="startbutton">Take photo</button>
-        </div>
-    <br/>
+    <br>
+    <div class="camera">
+        <video id="video">Video stream not available.</video>
+        <br>
+        <button id="takePictureButton">Take photo</button>
+    </div>
+    <br>
     Canvas
     <script src="js/webcam.js"></script>
-    <br/>
-    <canvas id="canvas"></canvas>
+    <br>
+    <canvas id="canvas">
+    </canvas>
 </body>
 </html>

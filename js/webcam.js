@@ -4,6 +4,7 @@ var width = 320;
 var height = 0;
 var streaming = false;
 var localstream = null;
+var nameCount = 1;
 
 startCameraButton.onclick = start;
 takePictureButton.onclick = takepicture;
@@ -84,6 +85,17 @@ function takepicture() {
         context.drawImage(video, 0, 0, width, height);
 
         var dataURL = canvas.toDataURL("image/jpeg", 0.95);
+        //
+        // create temporary link  
+        var tmpLink = document.createElement( 'a' );  
+        tmpLink.download = 'image.png'; // set the name of the download file 
+        tmpLink.href = dataURL;  
+    
+        // temporarily add link to body and initiate the download  
+        document.body.appendChild( tmpLink );  
+        tmpLink.click();  
+        document.body.removeChild( tmpLink );  
+        //
         if (dataURL && dataURL != "data:,") {
             var fileName = generateImageName();
             fileName = fileName + ".txt"
@@ -91,6 +103,7 @@ function takepicture() {
         } else {
             console.log("Image not available");
         }
+        nameCount++;
     } else {
         clearphoto();
     }
@@ -98,13 +111,31 @@ function takepicture() {
 
     function generateImageName() {
     //generate image name logic here 
+    imageName = "photo"+ nameCount
     return imageName;
 }
 
 function uploadimage(dataurl, filename) {
     //upload logic here ...
+    return dataURL
 }
 
+function generateImageName() {
+    //generate image name logic here 
+    return imageName;
+}
+
+function download(){
+    var image = canvas.toDataURL();
+    var templink = document.createElement("a")
+    var imageName = generateImageName();
+    templink.download = imageName;
+    img.download = image;
+
+    document.body.appendChild(templink);
+    templink.click();
+    document.body.removeChild(templink);
+}
 function stopVideo() {
     if (localstream) {
         localstream.getTracks().forEach(function (track) {

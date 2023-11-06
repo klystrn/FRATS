@@ -1,11 +1,5 @@
 import sqlite3
 
-#cur.execute("CREATE TABLE Userinfo(Name, Image, VerifyImg)")
-#cur.execute("SELECT * FROM Userinfo")
-#result = cur.fetchall()
-#for row in result:
-#   print(row[0])
-
 def convertToBinaryData(filename):
     # Convert digital data to binary format
     with open(filename, 'rb') as file:
@@ -35,8 +29,8 @@ def insertBLOB(name, photo, proofFile):
         if con:
             con.close()
             print("The sqlite connection is closed")
-
-insertBLOB("P", r"C:\Users\X1 Carbon\Pictures\Saved Pictures\SMO-Award.jpg", r"C:\Users\X1 Carbon\Pictures\uu.txt")
+# insert image here.
+insertBLOB("P", "./ImageTest/jai.png", " ")
 
 #con.commit()
 #con.close()

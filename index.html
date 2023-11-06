@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRATS</title>
     <link rel="stylesheet" href="css/styles.css">
+ 
 </head>
 <body>
     <h1><b>FRATS</b></h1>
@@ -26,5 +27,11 @@
     <br>
     <canvas id="canvas">
     </canvas>
+    <br>
+    <form method="POST" enctype="multipart/form-data">
+        {{form.hidden_tag()}}
+        {{form.file()}}
+        {{form.submit()}}
+    </form>
 </body>
 </html>

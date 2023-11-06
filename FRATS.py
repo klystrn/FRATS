@@ -1,9 +1,11 @@
 import sqlite3
 
+#sqlite3 [database name] - connect to database
+
 def convertToBinaryData(filename):
     # Convert digital data to binary format
-    with open(filename, 'rb') as file:
-        blobData = file.read()
+    with open(filename, 'rb') as file: #reading binary file
+        blobData = file.read() 
     return blobData
 
 def insertBLOB(name, photo, proofFile):
@@ -12,14 +14,14 @@ def insertBLOB(name, photo, proofFile):
         cur = con.cursor()
         print("Connected to SQLite")
         sqlite_insert_blob_query = """ INSERT INTO Userinfo
-                                  (name, photo, proof) VALUES (?, ?, ?)"""
+                                  (name, Image, VerifyImg) VALUES (?, ?, ?)"""
 
         empPhoto = convertToBinaryData(photo)
         proof = convertToBinaryData(proofFile)
         # Convert data into tuple format
         data_tuple = (name, empPhoto, proof)
         cur.execute(sqlite_insert_blob_query, data_tuple)
-        sqliteConnection.commit()
+        con.commit()
         print("Image and file inserted successfully as a BLOB into a table")
         cur.close()
 
@@ -29,8 +31,5 @@ def insertBLOB(name, photo, proofFile):
         if con:
             con.close()
             print("The sqlite connection is closed")
-# insert image here.
-insertBLOB("P", "./ImageTest/jai.png", " ")
 
-#con.commit()
-#con.close()
+insertBLOB("QY", "./ImageTest/jai.png", "./ImageTest/jai.png")

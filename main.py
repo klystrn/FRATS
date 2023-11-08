@@ -6,19 +6,25 @@ import os
 from wtforms.validators import InputRequired
 
 app = Flask(__name__)
+app.static_folder='static'
+
 app.config['SECRET_KEY'] = 'supersecretkey'
-app.config['UPLOAD_FOLDER'] = 'static/files'
+app.config['UPLOAD_FOLDER'] = 'ImageTest'
 
 class UploadFileForm(FlaskForm):
     file = FileField("File")
-    submit = SubmitField("Upload File")
+    Submit = SubmitField("Upload File")
 
 @app.route('/', methods=['GET',"POST"])
 @app.route('/home', methods=['GET',"POST"])
+
 def home():
     form = UploadFileForm()
     if form.validate_on_submit():
-        file = form.file.data # First grab the file
+        # First grab the file
+        
+        file = form.file.data 
+        print(file)
         file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['UPLOAD_FOLDER'],secure_filename(file.filename))) # Then save the file
         return "File has been uploaded."
     return render_template('index.html', form=form)

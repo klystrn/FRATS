@@ -32,4 +32,4 @@ def insertBLOB(name, photo, proofFile):
             con.close()
             print("The sqlite connection is closed")
 
-insertBLOB("QY", "./ImageTest/jai.png", "./ImageTest/jai.png")
+insertBLOB("QY", "opencv0.png", "opencv1.png")

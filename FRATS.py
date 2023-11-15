@@ -14,7 +14,7 @@ def insertBLOB(name, photo, proofFile):
         cur = con.cursor()
         print("Connected to SQLite")
         sqlite_insert_blob_query = """ INSERT INTO Userinfo
-                                  (name, Image, VerifyImg) VALUES (?, ?, ?)"""
+                                  (ID, Name, Image, DateTimeSaved) VALUES (?, ?, ?, ?)"""
 
         empPhoto = convertToBinaryData(photo)
         proof = convertToBinaryData(proofFile)

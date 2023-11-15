@@ -48,7 +48,26 @@ def home():
             con.rollback()
             msg = "Error in the INSERT"
 
-    return render_template('index.html', form=form)
+    return render_template('webcam.html', form=form)
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/index')
+def index():
+    return render_template('index.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/reset')
+def reset():
+    return render_template('reset.html')
+
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

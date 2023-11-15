@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRATS</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+
+<body>
+    <style>
+        body {
+
+            text-align: center;
+        }
+    </style>
+    <!-- Navbar Section-->
+    <nav class="navbar">
+        <div class="navbar_container">
+            <a href="{{ url_for("index") }}" id="navbar_logo">FRATS</a>
+            <div class="navbar_toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar_menu">
+                <li class="navbar_item">
+                    <a href="{{ url_for("index") }}" class="navbar_links">Home</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="{{ url_for("about") }}" class="navbar_links">About</a>
+                </li>
+                <!--<li class="navbar_item">
+                    <a href="/" class="navbar_links">Contact</a>
+                </li>-->
+                <!--<li class="navbar_btn"><a href="/" class="button">Sign Up</a>
+                </li>-->
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero_container">
+            <div class="hero_content">
+                <br>
+                <br>
+                <button class="main_btn" id="startCameraButton">Start Camera</button>
+                <br>
+                <br>
+                <select id="videoSelect"></select>
+                <br>
+                <br>
+                Video Tag
+                <script src=../static/js/webcam.js"></script>
+                <br>
+                <div class="camera">
+                    <video id="video">Video stream not available.</video>
+                    <br>
+                    <button class="main_btn" id="takePictureButton">Take photo</button>
+                </div>
+                <br>
+                Canvas
+                <script src="../static/js/webcam.js"></script>
+                <br>
+                <canvas id="canvas">
+                </canvas>
+                <br>
+                <form action="/" method="POST" enctype="multipart/form-data">
+                    {{form.hidden_tag()}}
+                    Name:
+                    <input type="text" name="nm" onblur="getName()"><br>
+                    {{form.file()}}
+                    {{form.Submit()}}
+                  </form>
+                </div>
+
+                <!--<div class="main_img--container">
+    <img src="https://techolds.com//wp-content//uploads//2021//11//man-wearing-smart-glasses-virtual-scanning-technology-glitch-effect-1.jpg"
+        alt="pic" id="main_img" />-->
+                <script>
+                    let popup = document.getElementById("popup");
+
+                    function openPopup() {
+                        popup.classList.add("open-popup");
+                    }
+                    function closePopup() {
+                        popup.classList.remove("open-popup");
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

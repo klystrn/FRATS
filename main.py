@@ -17,6 +17,8 @@ app.config['SECRET_KEY'] = 'supersecretkey'
 app.config['UPLOAD_FOLDER'] = 'ImageTest'
 
 con = sqlite3.connect('FRATS.db', check_same_thread=False)
+now = datetime.now()
+DID = 1
 class UploadFileForm(FlaskForm):
     file = FileField("File")
     Submit = SubmitField("Upload File")
@@ -38,7 +40,7 @@ def home():
             img = file.read()
             # Connect to SQLite3 database and execute the INSERT
             cur = con.cursor()
-            cur.execute("INSERT INTO Userinfo  (name, Image, VerifyImg) VALUES (?, ?, ?)",(nm, img, img))
+            cur.execute("INSERT INTO Userinfo  (ID, Name, Image, DateTimeSaved) VALUES (?, ?, ?, ?)",(DID, nm, img, now))
             con.commit()
             msg = "Record successfully added to database"
             

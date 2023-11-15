@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime
 
 #sqlite3 [database name] - connect to database
 
@@ -8,7 +9,7 @@ def convertToBinaryData(filename):
         blobData = file.read() 
     return blobData
 
-def insertBLOB(name, photo, proofFile):
+def insertBLOB(ID, name, photo, now):
     try:
         con = sqlite3.connect("FRATS.db")
         cur = con.cursor()
@@ -17,9 +18,9 @@ def insertBLOB(name, photo, proofFile):
                                   (ID, Name, Image, DateTimeSaved) VALUES (?, ?, ?, ?)"""
 
         empPhoto = convertToBinaryData(photo)
-        proof = convertToBinaryData(proofFile)
+        now = datetime.now()
         # Convert data into tuple format
-        data_tuple = (name, empPhoto, proof)
+        data_tuple = (ID, name, empPhoto, now)
         cur.execute(sqlite_insert_blob_query, data_tuple)
         con.commit()
         print("Image and file inserted successfully as a BLOB into a table")
@@ -32,4 +33,4 @@ def insertBLOB(name, photo, proofFile):
             con.close()
             print("The sqlite connection is closed")
 
-insertBLOB("QY", "opencv0.png", "opencv1.png")
+insertBLOB(10, 'Pt', 'opencv0.png', "2022-11-15 13:44:26.768439")

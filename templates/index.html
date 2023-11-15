@@ -29,7 +29,9 @@
     </canvas>
     <br>
     <form action="/" method="POST" enctype="multipart/form-data">
-        {{form.hidden_tag()}}
+
+        Name:
+        <input type="text" name="nm" onblur="getName()"><br>
         {{form.file()}}
         {{form.Submit()}}
       </form>

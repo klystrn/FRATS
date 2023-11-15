@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRATS</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <style>
+        body {
+
+            text-align: center;
+            background-color: #000000;
+
+        }
+    </style>
+    <!-- Navbar Section-->
+    <nav class="navbar">
+        <div class="navbar_container">
+            <a href="/" id="navbar_logo">FRATS</a>
+            <div class="navbar_toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar_menu">
+                <li class="navbar_item">
+                    <a href="/" class="navbar_links">Home</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="/about.html" class="navbar_links">About</a>
+                </li>
+                <!--<li class="navbar_item">
+                    <a href="/" class="navbar_links">Contact</a>
+                </li>-->
+                <!--<li class="navbar_btn"><a href="/" class="button">Sign Up</a>
+                </li>-->
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero_container">
+            <div class="hero_content">
+                <br>
+                <br>
+                <button class="main_btn" id="startCameraButton">Start Camera</button>
+                <br>
+                <br>
+                <select id="videoSelect"></select>
+                <br>
+                <br>
+                Video Tag
+                <script src="js/webcam.js"></script>
+                <br>
+                <div class="camera">
+                    <video id="video">Video stream not available.</video>
+                    <br>
+                    <button class="main_btn" id="takePictureButton">Take photo</button>
+                </div>
+                <br>
+                Canvas
+                <script src="js/webcam.js"></script>
+                <br>
+                <canvas id="canvas">
+                </canvas>
+                <br>
+                <button class="main_btn" id="uploadButton" onclick="openPopup()">Upload photo</button>
+                <!-- Inside the popup div -->
+                <div class="popup" id="popup">
+                    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+                        type="module"></script>
+
+                    <dotlottie-player src="https://lottie.host/f08e9c65-680c-4aea-b7b2-566657dd6f5e/xXxNQ63AYY.json"
+                        background="transparent" speed="1" style="width: 300px; height: 300px;" loop
+                        autoplay></dotlottie-player>
+
+                    <p>"Your image has been successfully uploaded. Thank you!"</p>
+                    <button type="button" onclick="closePopup()">OK</button>
+                </div>
+
+                <!--<div class="main_img--container">
+    <img src="https://techolds.com//wp-content//uploads//2021//11//man-wearing-smart-glasses-virtual-scanning-technology-glitch-effect-1.jpg"
+        alt="pic" id="main_img" />-->
+                <script>
+                    let popup = document.getElementById("popup");
+
+                    function openPopup() {
+                        popup.classList.add("open-popup");
+                    }
+                    function closePopup() {
+                        popup.classList.remove("open-popup");
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

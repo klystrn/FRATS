@@ -4,21 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD:index.html
     <title>FRATS
     </title>
     <link rel="stylesheet" href="css/styles.css" />
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/4fa5958d80.js" crossorigin="anonymous"></script>
-=======
-    <title>FRATS</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
- 
->>>>>>> 3302b8d5385936613601fa1a25eeff61c335cb46:templates/index.html
 </head>
 
 <body>
-<<<<<<< HEAD:index.html
 
     <!-- Navbar Section-->
     <nav class="navbar">
@@ -34,19 +26,20 @@
                     <a href="/" class="navbar_links">Home</a>
                 </li>
                 <li class="navbar_item">
-                    <a href="/about.html" class="navbar_links">About</a>
+                    <a href="/tech.html" class="navbar_links">About</a>
                 </li>
-                <!--<li class="navbar_item">
+                <li class="navbar_item">
                     <a href="/" class="navbar_links">Contact</a>
-                </li>-->
-                <li class="navbar_btn"><a href="/login.html" class="button">Login</a>
                 </li>
+                <!--<li class="navbar_btn"><a href="/" class="button">Sign Up</a>
+                </li>-->
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <div class="main">
+    <div class="main"
+        background="https://images.unsplash.com/photo-1580852300513-9b50125bf293?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNhbWVyYSUyMGxlbnN8ZW58MHx8MHx8fDA%3D">
         <div class="main_container">
             <div class="main_content">
                 <h1>FACIAL RECONGNITION</h1>
@@ -56,11 +49,11 @@
                     Life for all.</p>
                 <button class="main_btn"><a href="webcam.html">Get Started</a></button>
             </div>
-            <!--<div class="main_img--container">
-                <img src="https://techolds.com//wp-content//uploads//2021//11//man-wearing-smart-glasses-virtual-scanning-technology-glitch-effect-1.jpg"
-                    alt="pic" id="main_img" />-->
+            <div class="main_img--container">
+                <img src="https://images.unsplash.com/photo-1580852300513-9b50125bf293?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNhbWVyYSUyMGxlbnN8ZW58MHx8MHx8fDA%3D"
+                    alt="pic" id="main_img" />
+            </div>
         </div>
-    </div>
     </div>
 
     <!-- Footer Section-->
@@ -106,22 +99,22 @@
                 <div class="footer_logo">
                     <a href="/" id="footer_logo"><i class="fas faa-gem"></i>FRATS</a>
                 </div>
-                <p class="website_rights"> FRATS 2023. All right reserved</p>
+                <p class="website_right"> FRATS 2023. All right reserved</p>
                 <div class="social_icons">
-                    <a href="https://www.facebook.com//" class="social_icon--link" target="_blank">
-                        <i class="fa-brands fa-facebook"></i>
+                    <a href="/" class="social_icon--link" target="_blank">
+                        <i class="fab fa-facebook"></i>
                     </a>
-                    <a href="https://www.instagram.com//" class="social_icon--link" target="_blank">
-                        <i class="fa-brands fa-instagram"></i>
+                    <a href="/" class="social_icon--link" target="_blank">
+                        <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://twitter.com//?lang=en" class="social_icon--link" target="_blank">
+                    <a href="/" class="social_icon--link" target="_blank">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="https://sg.linkedin.com//" class="social_icon--link" target="_blank">
+                    <a href="/" class="social_icon--link" target="_blank">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://www.youtube.com//" class="social_icon--link" target="_blank">
-                        <i class="fa-brands fa-youtube"></i>
+                    <a href="/" class="social_icon--link" target="_blank">
+                        <i class="fab fa-youtube"></i>
                     </a>
                 </div>
             </div>
@@ -129,35 +122,6 @@
 
     </div>
     <script src="app.js"></script>
-=======
-    <h1><b>FRATS</b></h1>
-    <select id="videoSelect"></select>
-    <br>
-    <button id="startCameraButton">Start Camera</button>
-    <br>
-    Video Tag
-    <script src="../static/js/webcam.js"></script>
-    <br>
-    <div class="camera">
-        <video id="video">Video stream not available.</video>
-        <br>
-        <button id="takePictureButton">Take photo</button>
-    </div>
-    <br>
-    Canvas
-    <script src="../static/js/webcam.js"></script>
-    <br>
-    <canvas id="canvas">
-    </canvas>
-    <br>
-    <form action="/" method="POST" enctype="multipart/form-data">
-        {{form.hidden_tag()}}
-        Name:
-        <input type="text" name="nm" onblur="getName()"><br>
-        {{form.file()}}
-        {{form.Submit()}}
-      </form>
->>>>>>> 3302b8d5385936613601fa1a25eeff61c335cb46:templates/index.html
 </body>
 
 </html>

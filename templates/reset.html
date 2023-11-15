@@ -5,11 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/admin.css" />
+    <script src="https://kit.fontawesome.com/4fa5958d80.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 
 <body>
     <div class="center">
+        <style> 
+            .btn-close{
+            color: #fff;
+        } 
+        .btn-close:hover {
+            color: #f77062;
+            transition: all 0.3s ease;
+        }</style>
+            <a href="{{ url_for("index") }}" class="btn-close" ><i class="fa-solid fa-xmark"></i></a>
+
         <h1>Reset Password</h1>
         <form method="post">
             <style>

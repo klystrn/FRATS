@@ -26,3 +26,4 @@ import matplotlib.pyplot as plt
 plt.figure(figsize=(20,10))
 plt.imshow(img_rgb)
 plt.axis('off')
+

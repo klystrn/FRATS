@@ -189,3 +189,19 @@ input[type="submit"]:hover {
     border-color: none;
     transition: .5s;
 }
+
+.btn-close {
+    background: none;
+    padding: 10px;
+    border: 0;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    /* Adjust the top value to lower the circle */
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    color: linear-gradient(to top, #f77062 0%, #fe5196 100%);
+    text-align: center;
+}

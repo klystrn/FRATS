@@ -1,2 +1,2 @@
 -- SQLite
-delete from Userinfo where ID = '1'
+SELECT * FROM RegUser;

@@ -21,7 +21,7 @@ def readBlobData(empId):
             Image = row[2]
 
             print("Storing Image \n")
-            ImagePath = 'C:\\Users\\X1 Carbon\\Documents\\Ngee Ann Poly\\Y2S2\\PFD\\'+ Name + ".jpg"
+            ImagePath = Name + ".jpg"
             writeTofile(Image, ImagePath)
         cursor.close()
 

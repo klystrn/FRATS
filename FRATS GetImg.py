@@ -21,15 +21,25 @@ def readBlobData(empId):
             Image = row[2]
 
             print("Storing Image \n")
-            ImagePath = 'C:\\Users\\X1 Carbon\\Documents\\Ngee Ann Poly\\Y2S2\\PFD\\'+ Name + ".jpg"
+            ImagePath = Name + ".jpg"
             writeTofile(Image, ImagePath)
         cursor.close()
 
+    except sqlite3.Error as error:
+        print("Failed to read blob data from sqlite table", error)
+def getlastimg():
+    try:
+        sqliteConnection = sqlite3.connect('FRATS.db')
+        cur2 = sqliteConnection.cursor()
+        print("Connected to SQLite")
+        cur2.execute('SELECT ID FROM UserInfo ORDER BY ID DESC LIMIT 1')
+        LI = cur2.fetchone()[0]
+        readBlobData(LI)
     except sqlite3.Error as error:
         print("Failed to read blob data from sqlite table", error)
     finally:
         if sqliteConnection:
             sqliteConnection.close()
             print("sqlite connection is closed")
-
-readBlobData(2)
+    
+getlastimg()

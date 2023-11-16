@@ -27,6 +27,13 @@ body {
 
 }
 
+.center form h1 {
+    font-size: 24px;
+    font-weight: 500;
+    padding: 20px 0;
+    color: #fff;
+}
+
 .center form {
     padding: 0 40px;
     box-sizing: border-box;
@@ -205,3 +212,52 @@ input[type="submit"]:hover {
     color: linear-gradient(to top, #f77062 0%, #fe5196 100%);
     text-align: center;
 }
+
+/* Add this block to your existing CSS file 
+.popup {
+    width: 350px;
+    background: #131313;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #fff;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+
+.popup.open-popup {
+    visibility: visible;
+    top: 70%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup h2 {
+    font-size: 24px;
+    font-weight: 500;
+    padding: 20px 0;
+    color: #fff;
+}
+
+.popup p {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.popup button {
+    width: 100%;
+    padding: 10px 0;
+    color: #fff;
+    border: 0;
+    outline: none;
+    border: 1px solid;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+    background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
+    font-weight: 700;
+}*/

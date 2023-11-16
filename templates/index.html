@@ -17,7 +17,12 @@
     <nav class="navbar">
         <div class="navbar_container">
             <a href="{{ url_for("index") }}" id="navbar_logo">FRATS</a>
-            <div class="navbar_toggle" id="mobile-menu">
+            <div id="mobile-menu" class="navbar_toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -123,7 +128,14 @@
         </div>
 
     </div>
-    <script src="app.js"></script>
+    <script>const menu = document.querySelector('#mobile-menu');
+    const menuLinks = document.querySelector('.navbar_menu');
+    
+    menu.addEventListener('click', function(){
+        menu.classList.toggle('is-active');
+        menuLinks.classList.toggle('active');
+    });
+    </script>
 </body>
 
 </html>

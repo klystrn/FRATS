@@ -141,13 +141,14 @@
 
     }
 
-    .navbar_tooggle .bar {
+    .navbar_toggle .bar {
         width: 25px;
         height: 3px;
         margin: 5px auto;
         transition: all 0.3s ease-in-out;
         background: #fff;
     }
+
 
     .navbar_item {
         width: 100%;
@@ -195,13 +196,13 @@
     }
 
     #mobile-menu.is-active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(45deg);
+        transform: translateY(-8px) rotate(-45deg);
     }
 
 }
 
 /* Hero Section CSS */
-main {
+.main {
     margin: 0;
     padding: 0;
     display: flex;
@@ -215,7 +216,6 @@ main {
     width: 100%;
     max-width: 1300px;
     padding: 0 50px;
-    /*background-image: url(https://c4.wallpaperflare.com/wallpaper/471/767/754/abstract-ae-plexus-cyan-dots-wallpaper-preview.jpg);*/
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -226,7 +226,6 @@ main {
     justify-content: center;
     height: 90vh;
 }
-
 
 .main_content {
     text-align: center;
@@ -273,7 +272,6 @@ main {
     outline: none;
 }
 
-
 .main_btn a {
     position: relative;
     z-index: 2;
@@ -282,21 +280,9 @@ main {
 }
 
 /*
-.main_btn:after {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background-image: linear-gradient(to top, #b721ff 0%, #21d4fd 100%);
-
-    border-radius: 4px;
-}*/
-
 .main_btn:hover {
     color: #fff;
-}
+}*/
 
 .main_btn:hover:after {
     width: 100%;
@@ -310,6 +296,16 @@ main {
     height: 120%;
     width: 120%;
 }
+
+/* Mobile Responsive*/
+@media screen and (max-width: 768px) {
+    /* ... (your existing responsive styles) ... */
+}
+
+@media screen and (max-width: 480px) {
+    /* ... (your existing responsive styles) ... */
+}
+
 
 
 .hero {
@@ -360,6 +356,50 @@ main {
 
     }
 
+    /* Updated Styles for About Container */
+    .about_container {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* Use a single flexible column */
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 20px;
+        /* Add padding for better spacing on smaller screens */
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-color: #000000;
+        height: auto;
+        /* Remove fixed height for better responsiveness */
+    }
+
+    /* Updated Styles for About Content */
+    .about-content {
+        max-width: 100%;
+        /* Ensure content doesn't overflow on smaller screens */
+        text-align: left;
+    }
+
+    .about-content h1 {
+        font-size: 2rem;
+        /* Decrease font size for better readability */
+        margin-top: 1rem;
+        /* Adjust top margin for better spacing */
+    }
+
+    .about-content p {
+        font-size: 1rem;
+        /* Decrease font size for better readability */
+        margin-top: 10px;
+        /* Adjust top margin for better spacing */
+        margin-bottom: 20px;
+    }
+
+
+
+
 }
 
 
@@ -383,7 +423,24 @@ main {
         margin: 2.5rem 0;
     }
 
+    .about-content h1 {
+        font-size: 2rem;
+        /* Decrease font size for better readability */
+        margin-top: 1rem;
+        /* Adjust top margin for better spacing */
+    }
+
+    .about-content p {
+        font-size: 1.25rem;
+        /* Decrease font size for better readability */
+        margin-top: 10px;
+        /* Adjust top margin for better spacing */
+        margin-bottom: 20px;
+    }
+
 }
+
+
 
 
 
@@ -532,13 +589,13 @@ main {
     }
 }
 
-/* Add this block to your existing CSS file */
+/*Add this block to your existing CSS file */
 .popup {
     width: 350px;
     background: #131313;
     border-radius: 10px;
     position: absolute;
-    top: 50%;
+    top: 0;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.1);
     text-align: center;
@@ -547,6 +604,7 @@ main {
     visibility: hidden;
     transition: transform 0.4s, top 0.4s;
 }
+
 
 .popup.open-popup {
     visibility: visible;
@@ -639,3 +697,38 @@ main {
     margin-top: 10px;
     /* Adjust the margin-top value */
 }
+
+/*
+#toastBox {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.toast {
+    width: 400px;
+    height: 80px;
+    background-color: #fff;
+    font-weight: 500;
+    margin: 15px 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    position: relative
+}
+
+.toast::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background: green;
+    animation: anim 5s linear-forwards;
+}*/

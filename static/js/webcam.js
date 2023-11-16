@@ -10,10 +10,10 @@ startCameraButton.onclick = start;
 takePictureButton.onclick = takepicture;
 
 navigator.mediaDevices.enumerateDevices()
-        .then(gotDevices)
-        .catch(function (err) {
-            console.log("An error occured while getting device list! " + err);
-        });
+    .then(gotDevices)
+    .catch(function (err) {
+        console.log("An error occured while getting device list! " + err);
+    });
 
 function gotDevices(deviceInfos) {
     while (videoSelect.firstChild) {
@@ -37,10 +37,10 @@ function start() {
     var videoSource = videoSelect.value;
     var constraints = {
         audio: false,
-        video: {deviceId: videoSource ? {exact: videoSource} : undefined}
+        video: { deviceId: videoSource ? { exact: videoSource } : undefined }
     };
     navigator.mediaDevices.getUserMedia(constraints).
-            then(gotStream).then(gotDevices).catch(handleError);
+        then(gotStream).then(gotDevices).catch(handleError);
 }
 
 
@@ -87,14 +87,14 @@ function takepicture() {
         var dataURL = canvas.toDataURL("image/jpeg", 0.95);
         //
         // create temporary link  
-        var tmpLink = document.createElement( 'a' );  
+        var tmpLink = document.createElement('a');
         tmpLink.download = 'image.png'; // set the name of the download file 
-        tmpLink.href = dataURL;  
-    
+        tmpLink.href = dataURL;
+
         // temporarily add link to body and initiate the download  
-        document.body.appendChild( tmpLink );  
-        tmpLink.click();  
-        document.body.removeChild( tmpLink );  
+        document.body.appendChild(tmpLink);
+        tmpLink.click();
+        document.body.removeChild(tmpLink);
         //
         if (dataURL && dataURL != "data:,") {
             var fileName = generateImageName();
@@ -109,9 +109,9 @@ function takepicture() {
     }
 }
 
-    function generateImageName() {
+function generateImageName() {
     //generate image name logic here 
-    imageName = "photo"+ nameCount
+    imageName = "photo" + nameCount
     return imageName;
 }
 
@@ -125,7 +125,7 @@ function generateImageName() {
     return imageName;
 }
 
-function download(){
+function download() {
     var image = canvas.toDataURL();
     var templink = document.createElement("a")
     var imageName = generateImageName();

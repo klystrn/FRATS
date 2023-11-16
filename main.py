@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField
 from werkzeug.utils import secure_filename
@@ -50,6 +50,57 @@ def home():
             msg = "Error in the INSERT"
 
     return render_template('webcam.html', form=form)
+
+@app.route('/sp', methods=['GET', 'POST'])
+def sp():
+    if request.method == 'POST':
+        username = request.form['uname']
+        password = request.form['npw']
+        email = request.form['uemail']
+
+        # Validate the user's input
+        if not username or not password or not email:
+            error = "Please enter all required fields."
+            return render_template('signup.html', error=error)
+
+        # Create a new user account in the database
+        try:
+            conn = sqlite3.connect('user.db')
+            cur = conn.cursor()
+            cur.execute("INSERT INTO RegUser (UserName, Password, Email) VALUES (?, ?, ?)", (username, password, email))
+            conn.commit()
+            conn.close()
+            success = "Account created successfully."
+            return render_template('signup.html', success=success)
+        except:
+            error = "An error occurred while creating your account."
+            return render_template('signup.html', error=error)
+
+    return render_template('signup.html')
+
+@app.route('/log', methods=['GET', 'POST'])
+def log():
+    if request.method == 'POST':
+        username = request.form['una']
+        password = request.form['upass']
+
+        connection = sqlite3.connect('user.db')
+        cursor = connection.cursor()
+
+        cursor.execute('SELECT * FROM RegUser WHERE UserName = ?', (username,))
+        user = cursor.fetchone()
+        connection.close()
+
+        if user:
+            if user[1] == password:
+                return redirect(url_for('home'))
+            else:
+                error = 'Invalid password'
+        else:
+            error = 'Username not found'
+
+    return render_template('login.html')
+
 @app.route('/about')
 def about():
     return render_template('about.html')

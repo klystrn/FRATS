@@ -1,57 +1,73 @@
-# Face detection in Images
 import cv2
 
-camera = cv2.VideoCapture(0)
-for i in range(2):
-    return_value, image = camera.read()
-    cv2.imwrite('/ImageTest/opencv'+str(i)+'.png', image)
-del(camera)
+face_detector1 = cv2.CascadeClassifier('data/haarcascades/haarcascade_frontalface_default.xml')
+eye_dectector1 = cv2.CascadeClassifier('data/haarcascades/haarcascade_eye.xml')
 
-img = cv2.imread(image)
-gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-gray_image.shape(4000,2667)
+def eyeDetect(ex1, ey1, ew1, eh1, roi_color):
+    cv2.rectangle(roi_color, (ex1, ey1), (ex1 + ew1, ey1 + eh1), (0, 255, 0), 2)
+    print(f'X:{ex1}, Y:{ey1}')
+    print(f'W:{ew1}, H:{eh1}')
+    print('-----------------')
 
-face_classifier = cv2.CascadeClassifier(
-    cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
-)
+    return True
 
-face = face_classifier.detectMultiScale(
-    gray_image, scaleFactor=1.1, minNeighbors=5, minSize=(40, 40)
-)
+def videoCapture():
+    webcam = cv2.VideoCapture(0)
 
-for (x, y, w, h) in face:
-    cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 4)
+    if webcam.isOpened() is True:
+        print("Webcam Opening...")
 
-import matplotlib.pyplot as plt
-plt.figure(figsize=(20,10))
-plt.imshow(img_rgb)
-plt.axis('off')
-video_capture = cv2.VideoCapture(0)
+        while True:
+            try:
+                print('------------- NEW FRAME -------------')
+                _, frame = webcam.read()
+                gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+                faces = face_detector1.detectMultiScale(gray, 1.1, 4)
 
-def detect_bounding_box(vid):
-    gray_image = cv2.cvtColor(vid, cv2.COLOR_BGR2GRAY)
-    faces = face_classifier.detectMultiScale(gray_image, 1.1, 5, minSize=(40, 40))
-    for (x, y, w, h) in faces:
-        cv2.rectangle(vid, (x, y), (x + w, y + h), (0, 255, 0), 4)
-    return faces
+                faceHeightHalf = 0
 
-while True:
+                for (x, y, w, h) in faces:
+                    cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
+                    roi_gray = gray[y:y + h, x:x + w]
+                    roi_color = frame[y:y + h, x:x + w]
+                    eyes = eye_dectector1.detectMultiScale(roi_gray)
 
-    result, video_frame = video_capture.read()  # read frames from the video
-    if result is False:
-        break  # terminate the loop if the frame is not read successfully
+                    print(f'Face = X:{x} Y:{y}')
 
-    faces = detect_bounding_box(
-        video_frame
-    )  # apply the function we created to the video frame
+                countEyes = 0
+                for (ex, ey, ew, eh) in eyes:
+                    if eyeDetect(ex, ey, ew, eh, roi_color) is True:
+                        countEyes += 1
+                    if countEyes > 2:
+                        print('more than 2 eyes detected')
+                        break
 
-    cv2.imshow(
-        "My Face Detection Project", video_frame
-    )  # display the processed frame in a window named "My Face Detection Project"
+                cv2.imshow("Capturing Video...", frame)
+                print(f'Number of Eyes: {countEyes}')
 
-    if cv2.waitKey(1) & 0xFF == ord("q"):
-        break
+                key = cv2.waitKey(1)
 
-video_capture.release()
-cv2.destroyAllWindows()
+                if key == ord(' '):
+                    img = cv2.imwrite('webcam_screenshot.png', frame)
+                    print('>> Webcam image captured')
+                    webcam.release()
+                    img_new = cv2.imread('webcam_screenshot.png', cv2.IMREAD_ANYCOLOR)
+                    print('>> Webcam image saved')
+                    img_new = cv2.imshow("Captured Image", img_new)
+                    print('>> Webcam image displayed')
+                    cv2.waitKey(1000)
+                    cv2.destroyAllWindows()
+                    break
 
+                elif key == ord('q'):
+                    webcam.release()
+                    break
+
+            except(KeyboardInterrupt):
+                print("Webcam turning off...")
+                webcam.release()
+                cv2.destroyAllWindows()
+                break
+
+
+videoCapture()

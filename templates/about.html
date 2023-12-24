@@ -30,16 +30,19 @@
             </div>
             <ul class="navbar_menu">
                 <li class="navbar_item">
-                    <a href="{{ url_for("index") }}" class="navbar_links">Home</a>
+                    <a href="{{ url_for("webcam") }}" class="navbar_links">Webcam</a>
                 </li>
                 <li class="navbar_item">
-                    <a href="{{ url_for("index") }}" class="navbar_links">About</a>
+                    <a href="{{ url_for("about") }}" class="navbar_links">About</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="{{ url_for("index") }}" class="navbar_links">Exit</a>
                 </li>
                 <!--<li class="navbar_item">
                     <a href="/" class="navbar_links">Contact</a>
-                </li>-->
-                <li class="navbar_btn"><a href="{{ url_for("login") }}" class="button">Login</a>
                 </li>
+                <li class="navbar_btn"><a href="{{ url_for("login") }}" class="button">Login</a>
+                </li>-->
             </ul>
         </div>
     </nav>

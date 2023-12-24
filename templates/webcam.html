@@ -26,10 +26,13 @@
             </div>
             <ul class="navbar_menu">
                 <li class="navbar_item">
-                    <a href="{{ url_for("index") }}" class="navbar_links">Home</a>
+                    <a href="{{ url_for("webcam") }}" class="navbar_links">Webcam</a>
                 </li>
                 <li class="navbar_item">
                     <a href="{{ url_for("about") }}" class="navbar_links">About</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="{{ url_for("index") }}" class="navbar_links">Exit</a>
                 </li>
                 <!--<li class="navbar_item">
                     <a href="/" class="navbar_links">Contact</a>
@@ -67,10 +70,8 @@
                 <canvas id="canvas">
                 </canvas>
                 <br>
-                <form action="/" method="POST" enctype="multipart/form-data" >
+                <form action="/webcam" method="POST" enctype="multipart/form-data" >
                     {{form.hidden_tag()}}
-                    Name:
-                    <input type="text" name="nm" onblur="getName()"><br>
                     {{form.file()}}
                     {{form.Submit()}}
                 </form>                  

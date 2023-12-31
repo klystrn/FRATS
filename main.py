@@ -19,23 +19,28 @@ app.config['UPLOAD_FOLDER'] = 'ImageTest'
 con = sqlite3.connect('FRATS.db', check_same_thread=False)
 now = datetime.now()
 class UploadFileForm(FlaskForm):
-    file = FileField("File")
+    file = FileField("File", validators=[InputRequired()])
     Submit = SubmitField("Upload File")
 
 @app.route('/webcam', methods=['GET',"POST"])
 
 def webcam():
     form = UploadFileForm()
+    form2 = UploadFileForm()
     if form.validate_on_submit():
         # First grab the file
         file = form.file.data
+        file2 = form2.file.data
+        submit = SubmitField("Upload File")
+        img = file.read()
+        file2.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config["UPLOAD_FOLDER"],secure_filename(file2.filename)))
         
     #insert database
     # Data will be available from POST submitted by the form
     if request.method == 'POST':
         try:
             #nm = request.form['nm']
-            img = file.read()
+
             username = session["UserName"]
             # Connect to SQLite3 database and execute the INSERT
             cur = con.cursor()

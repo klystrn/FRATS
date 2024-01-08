@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, session
+from flask import Flask, render_template, redirect, url_for, session, request, flash
 from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField
 from werkzeug.utils import secure_filename
@@ -51,6 +51,7 @@ def webcam():
             
             cur.execute("INSERT INTO Image  (UserName, Image, DateTimeSaved) VALUES (?, ?, ?)",( username, img, now))
             con.commit()
+            flash("Successfully upload", "success")
             msg = "Record successfully added to database"
             
         except:
@@ -80,6 +81,7 @@ def sp():
             conn.commit()
             conn.close()
             success = "Account created successfully."
+            flash("Successfully sign up", "success")
             return render_template('signup.html', success=success)
         except:
             error = "An error occurred while creating your account."
@@ -105,8 +107,10 @@ def log():
                 session["UserName"] = username
                 return redirect(url_for('webcam'))
             else:
+                flash("Wrong username or password!", "warning")
                 error = 'Invalid password'
         else:
+            flash("Wrong username or password!", "warning")
             error = 'Username not found'
 
     return render_template('login.html')
@@ -119,6 +123,7 @@ def about():
 
 @app.route('/index')
 def index():
+    session.clear()
     return render_template('index.html')
 
 @app.route('/login')

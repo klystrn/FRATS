@@ -7,12 +7,12 @@ import os
 from flask import request, session
 import sqlite3
 from wtforms.validators import InputRequired
-
+import cv2, face_recognition
+import random
 
 app = Flask(__name__)
 app.static_folder='static'
 
-app.config['SQLAICHEMY_DATABASE_URI'] = 'sqlite:///FRATS.db'
 app.config['SECRET_KEY'] = 'supersecretkey'
 app.config['UPLOAD_FOLDER'] = 'ImageTest'
 
@@ -22,8 +22,14 @@ class UploadFileForm(FlaskForm):
     file = FileField("File", validators=[InputRequired()])
     Submit = SubmitField("Upload File")
 
-@app.route('/webcam', methods=['GET',"POST"])
+def find_face_encodings(image_path):
+    #reading img
+    image = cv2.imread(image_path)
+    #get face encoding from the image
+    face_enc = face_recognition.face_encodings(image)
+    return face_enc[0]
 
+@app.route('/webcam', methods=['GET',"POST"])
 def webcam():
     form = UploadFileForm()
     form2 = UploadFileForm()
@@ -33,8 +39,16 @@ def webcam():
         file2 = form2.file.data
         submit = SubmitField("Upload File")
         img = file.read()
-        file2.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config["UPLOAD_FOLDER"],secure_filename(file2.filename)))
-        
+        path = os.path.join(".\\", app.config["UPLOAD_FOLDER"],secure_filename(f"image_{random.randint(1000000000,9999999999)}.png"))
+        f = open(path, 'wb')
+        f.write(img)
+        f.close()
+        faceobj = face_recognition.load_image_file(path)
+        encode = face_recognition.face_encodings(faceobj)
+        #if len(encode) == 0:
+        #    error = "No face detected."
+        #    return render_template('webcam.html', form = form)
+
     #insert database
     # Data will be available from POST submitted by the form
     if request.method == 'POST':
@@ -51,8 +65,15 @@ def webcam():
             
             cur.execute("INSERT INTO Image  (UserName, Image, DateTimeSaved) VALUES (?, ?, ?)",( username, img, now))
             con.commit()
+            ImageID = cur.lastrowid
+            print(len(str(encode)))
+            print(str(encode))
+            cur.execute("INSERT INTO OpenCV  (ImageID, Encoding) VALUES (?, ?)",( ImageID, str(encode)))
+            con.commit()
+            con.close()
             flash("Successfully upload", "success")
             msg = "Record successfully added to database"
+            session["UserName"] = username
             
         except:
             con.rollback()
@@ -75,11 +96,10 @@ def sp():
 
         # Create a new user account in the database
         try:
-            conn = sqlite3.connect('FRATS.db')
-            cur = conn.cursor()
+            cur = con.cursor()
             cur.execute("INSERT INTO RegUser (UserName, Password, Email, RealName) VALUES (?, ?, ?, ?)", (username, password, email, name))
-            conn.commit()
-            conn.close()
+            con.commit()
+            con.close()
             success = "Account created successfully."
             flash("Successfully sign up", "success")
             return render_template('signup.html', success=success)
@@ -95,12 +115,11 @@ def log():
         username = request.form['una']
         password = request.form['upass']
 
-        connection = sqlite3.connect('FRATS.db')
-        cursor = connection.cursor()
+        cursor = con.cursor()
 
         cursor.execute('SELECT * FROM RegUser WHERE UserName = ?', (username,))
         user = cursor.fetchone()
-        connection.close()
+        con.close()
 
         if user:
             if user[1] == password:

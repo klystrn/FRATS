@@ -70,7 +70,7 @@ def webcam():
             print(str(encode))
             cur.execute("INSERT INTO OpenCV  (ImageID, Encoding) VALUES (?, ?)",( ImageID, str(encode)))
             con.commit()
-            con.close()
+            #con.close()
             flash("Successfully upload", "success")
             msg = "Record successfully added to database"
             session["UserName"] = username
@@ -99,7 +99,7 @@ def sp():
             cur = con.cursor()
             cur.execute("INSERT INTO RegUser (UserName, Password, Email, RealName) VALUES (?, ?, ?, ?)", (username, password, email, name))
             con.commit()
-            con.close()
+            #con.close()
             success = "Account created successfully."
             flash("Successfully sign up", "success")
             return render_template('signup.html', success=success)
@@ -119,7 +119,7 @@ def log():
 
         cursor.execute('SELECT * FROM RegUser WHERE UserName = ?', (username,))
         user = cursor.fetchone()
-        con.close()
+        #con.close()
 
         if user:
             if user[1] == password:
@@ -156,6 +156,10 @@ def reset():
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
+
+@app.route('/attendance')
+def attendance():
+    return render_template('attendance.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

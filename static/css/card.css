@@ -1,0 +1,261 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+body {
+    background: #ffff;
+}
+
+.wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffb199;
+    padding: 35px 15px 15px;
+    border-radius: 5px;
+}
+
+.wrapper:before {
+    content: "";
+    position: absolute;
+    top: 11px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 13px;
+    background: #ff8177;
+    border-radius: 50px;
+}
+
+.wrapper:after {
+    content: "";
+    position: absolute;
+    top: -212px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 230px;
+    background: #353535;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.125);
+}
+
+.card {
+    width: 200px;
+    height: 320px;
+    background: #fff;
+    border-radius: 5px;
+    perspective: 1000px;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front {
+    width: 200px;
+    height: 320px;
+    background: #fff;
+    padding: 20px 20px 0;
+    border-radius: 5px;
+}
+
+.front:before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 30%;
+    height: 225px;
+    background: #353535;
+    opacity: 0.8;
+}
+
+.front:after {
+    content: "DEVELOPER";
+    position: absolute;
+    top: 125px;
+    left: -15px;
+    transform: rotate(-90deg);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.front .info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    padding: 20px;
+    background: #353535;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.front p {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+}
+
+.front h2 {
+    font-weight: 500;
+}
+
+.front img {
+    width: 100%;
+    margin-bottom: 80px;
+}
+
+.front button {
+    width: 120px;
+    border: 1px solid #fff;
+    background: transparent;
+    border-radius: 50px;
+    padding: 8px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    color: #fff;
+}
+
+.back {
+    background: #fff;
+    color: #333;
+    padding: 10px 20px;
+    transform: rotateY(180deg);
+    font-size: 14px;
+    /* Reduce font size */
+    width: 100%;
+    /* Make the back class take up the full width of the card */
+    height: 100%;
+    /* Make the back class take up the full height of the card */
+    display: flex;
+    /* Add display flex to make the contents vertically centered */
+    flex-direction: column;
+    /* Add flex-direction column to make the contents vertically centered */
+    justify-content: center;
+    /* Add justify-content center to make the contents vertically centered */
+}
+
+
+.back h1 {
+    font-size: 24px;
+    /* Reduce font size */
+    margin-bottom: 5px;
+}
+
+
+.back h1 span {
+    font-weight: 400;
+}
+
+.back p {
+    font-size: 10px;
+    /* Reduce font size */
+}
+
+
+.back p span {
+    font-weight: 600;
+}
+
+.back img {
+    width: 80px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    flex: 1;
+    /* Make the row class take up the remaining space */
+}
+
+
+.col {
+    flex: 1;
+    text-align: center;
+    color: #555;
+    font-size: 10px;
+    position: relative;
+}
+
+.col h2 {
+    font-size: 12px;
+}
+
+
+.col::after {
+    content: ' ';
+    width: 1px;
+    height: 8px;
+    background: #7800ad;
+    position: absolute;
+    top: 3px;
+    right: 0;
+}
+
+
+.col:last-child::after {
+    display: none;
+}
+
+.col p {
+    margin-top: 3px;
+}
+
+.back button {
+    background: #7800ad;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-right: 10px;
+    box-shadow: 0 5px 8px rgba(120, 0, 173, 0.2);
+}
+
+
+.back a {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 3px;
+}
+
+
+.back a img {
+    width: 40%;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}

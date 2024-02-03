@@ -31,6 +31,8 @@ def find_face_encodings(image_path):
 
 @app.route('/webcam', methods=['GET',"POST"])
 def webcam():
+    if "UserName" not in session:
+        return render_template('index.html')
     form = UploadFileForm()
     form2 = UploadFileForm()
     if form.validate_on_submit():
@@ -122,7 +124,7 @@ def log():
         #con.close()
 
         if user:
-            if user[1] == password:
+            if user[1] == password and user[0] ==username:
                 session["UserName"] = username
                 return redirect(url_for('webcam'))
             else:

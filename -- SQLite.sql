@@ -1,9 +1,35 @@
--- SQLite
--- CREATE TABLE OpenCV(
--- ID INTEGER PRIMARY KEY AUTOINCREMENT,
--- Encoding TEXT NOT NULL,
--- ImageID INTEGER NOT NULL,
--- FOREIGN KEY(ImageID) REFERENCES Image(ID)
--- );
+-- -- SQLite
+-- -- CREATE TABLE OpenCV(
+-- -- ID INTEGER PRIMARY KEY AUTOINCREMENT,
+-- -- Encoding TEXT NOT NULL,
+-- -- ImageID INTEGER NOT NULL,
+-- -- FOREIGN KEY(ImageID) REFERENCES Image(ID)
+-- -- );
+-- SELECT * FROM attendance;
+-- -- INSERT INTO RegUser(UserName, Password, Email, RealName) VALUES ('samd','samd','sd@gmail.com','Sam David');
 
-SELECT * FROM attendance;
+-- INSERT INTO attendance(ID, UserName, RealName, Depart,Date, JoinTime, TimeLogout, Attendance) 
+-- VALUES
+-- (01, 'samd','Sam David', 'Design', '03-25-2022', '0800','1500',True),
+-- (01, 'samd','Sam David', 'Design', '03-26-2022', '0900','1600',True),
+-- (01, 'samd','Sam David', 'Design', '03-27-2022', '0830','1700',True),
+-- (01, 'samd','Sam David', 'Design', '03-28-2022', '1000','1800',True),
+-- (01, 'samd','Sam David', 'Design', '03-29-2022', '0800','1500',True),
+-- (01, 'samd','Sam David', 'Design', '03-30-2022', '0900','1600',True),
+-- (01, 'samd','Sam David', 'Design', '03-31-2022', '0830','1700',True),
+-- (01, 'samd','Sam David', 'Design', '04-01-2022', '1000','1800',True),
+-- (01, 'samd','Sam David', 'Design', '04-02-2022', '0800','1500',True),
+-- (01, 'samd','Sam David', 'Design', '04-03-2022', '0900','1600',True),
+-- (01, 'samd','Sam David', 'Design', '04-04-2022', '0830','1700',True),
+-- (01, 'samd','Sam David', 'Design', '04-05-2022', '1000','1800',True),
+-- (01, 'samd','Sam David', 'Design', '04-06-2022', '0800','1500',True),
+-- (01, 'samd','Sam David', 'Design', '04-07-2022', '0900','1600',True),
+-- (01, 'samd','Sam David', 'Design', '04-08-2022', '0830','1700',True),
+-- (01, 'samd','Sam David', 'Design', '04-09-2022', '1000','1800',True),
+-- (01, 'samd','Sam David', 'Design', '04-10-2022', '0800','1500',True),
+-- (01, 'samd','Sam David', 'Design', '04-11-2022', '0900','1600',True),
+-- (01, 'samd','Sam David', 'Design', '04-12-2022', '0830','1700',True),
+-- (01, 'samd','Sam David', 'Design', '04-13-2022', '1000','1800',True),
+-- (01, 'samd','Sam David', 'Design', '04-14-2022', '0800','1500',True),
+-- (01, 'samd','Sam David', 'Design', '04-15-2022', '0900','1600',True),
+-- (01, 'samd','Sam David', 'Design', '04-16-2022', '0830','1700',True);

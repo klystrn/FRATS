@@ -176,6 +176,10 @@ def view():
 def view1():
     return render_template('view1.html')
 
+@app.route('/card_id')
+def card_id():
+    return render_template('card_id.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
 

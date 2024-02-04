@@ -168,6 +168,10 @@ def attendance():
 def card_id():
     return render_template('card_id.html')
 
+@app.route('/view')
+def view():
+    return render_template('view.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
 

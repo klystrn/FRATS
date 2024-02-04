@@ -268,3 +268,37 @@ body {
 .card:hover .card-inner {
     transform: rotateY(180deg);
 }
+
+@media screen and (max-width: 768px) {
+    .card {
+        max-width: 100%;
+        /* Ensure the card fills the screen width on smaller devices */
+    }
+
+    .row {
+        flex-direction: column;
+        /* Change row direction to column for stacked layout */
+    }
+
+    .col {
+        flex: 0 0 100%;
+        /* Set column width to 100% for full width on smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .front img {
+        max-height: 150px;
+        /* Decrease the image height for smaller screens */
+    }
+
+    .front p {
+        font-size: 14px;
+        /* Decrease font size for smaller screens */
+    }
+
+    .back p {
+        font-size: 12px;
+        /* Further decrease font size for smaller screens */
+    }
+}

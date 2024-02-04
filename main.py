@@ -9,10 +9,10 @@ import sqlite3
 from wtforms.validators import InputRequired
 import cv2, face_recognition
 import random
+import numpy as np
 
 app = Flask(__name__)
 app.static_folder='static'
-
 
 app.config['SECRET_KEY'] = 'supersecretkey'
 app.config['UPLOAD_FOLDER'] = 'ImageTest'
@@ -29,6 +29,35 @@ def find_face_encodings(image_path):
     #get face encoding from the image
     face_enc = face_recognition.face_encodings(image)
     return face_enc[0]
+'''
+def get_encoding_from_db(image_id):
+    cur = con.cursor()
+    cur.execute("SELECT Encoding FROM OpenCV WHERE ImageID = ?", (image_id,))
+    result = cur.fetchone()
+    if result:
+        # Assuming the encoding is stored as a string and needs to be converted back to a list
+        encoding_str = result[0]
+        # Convert string back to list, here you might need to adjust the conversion depending on how you've stored it
+        encoding = eval(encoding_str)
+        return encoding
+    else:
+        return None
+    
+image1 = find_face_encodings('webcam_screenshot.jpg')
+
+# Loop through each image in the database
+cur = con.cursor()
+cur.execute("SELECT ImageID FROM OpenCV")
+image_ids = cur.fetchall()
+
+for image_id in image_ids:
+    image2 = get_encoding_from_db(image_id[0])
+    if image2:
+        compareFaces(image1, image2)
+'''
+#================ ================
+
+    
 
 @app.route('/webcam', methods=['GET',"POST"])
 def webcam():
@@ -70,8 +99,8 @@ def webcam():
             con.commit()
             ImageID = cur.lastrowid
             print(len(str(encode)))
-            print(str(encode))
-            cur.execute("INSERT INTO OpenCV  (ImageID, Encoding) VALUES (?, ?)",( ImageID, str(encode)))
+            print(np.array_str(encode[0]))
+            cur.execute("INSERT INTO OpenCV  (ImageID, Encoding) VALUES (?, ?)",( ImageID, np.array_str(encode[0])))
             con.commit()
             #con.close()
             flash("Successfully upload", "success")
@@ -137,6 +166,14 @@ def log():
 
     return render_template('login.html')
 
+#def att():
+    #if request.method == 'POST':
+        #cursor = con.cursor()
+        #cur.execute("INSERT INTO attendance (UserName, RealName, Depart, Date, JoinTime, TimeLogout, Attendance)VALUES (?, ?, ?, ?, ?, ?, ?)", ())
+        #con.commit()
+    #return render_template('login.html')
+
+
 @app.route('/about')
 def about():
     return render_template('about.html')
@@ -163,10 +200,6 @@ def signup():
 @app.route('/attendance')
 def attendance():
     return render_template('attendance.html')
-
-@app.route('/card_id')
-def card_id():
-    return render_template('card_id.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

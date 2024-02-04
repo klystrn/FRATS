@@ -42,13 +42,14 @@
     <div class="card">
         <div class="card-inner">
             <div class="front">
-                <img src="../img/pic1.png" alt="Employee_ID">
+                <img src={{url_for('static', filename='img/pic1.png')}}>
+               
                 <div class="info">
                     <p>Sam David</p>
                 </div>
             </div>
             <div class="back">
-                <img src="../img/waving-hand.png">
+                <img src={{url_for('static', filename='img/waving-hand.png')}}>
                 <h1>Sam<span>David</span></h1>
                 <p>I'm a UI designer currently working <span>@frats </span>in design depart.</p>
                 <div class="row">

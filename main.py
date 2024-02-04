@@ -162,7 +162,7 @@ def signup():
 
 @app.route('/attendance')
 def attendance():
-    return render_template('attendance.html')
+    return render_template('attendance.html',p1 = "100")
 
 @app.route('/card_id')
 def card_id():

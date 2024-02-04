@@ -228,7 +228,7 @@
 <body>
   <nav class="navbar">
     <div class="navbar_container">
-      <a href="#" id="navbar_logo">FRATS</a>
+      <a href="{{ url_for("index") }}" id="navbar_logo">FRATS</a>
       <div class="navbar_toggle" id="mobile-menu">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -236,16 +236,16 @@
       </div>
       <ul class="navbar_menu">
         <li class="navbar_item">
-          <a href="#" class="navbar_links">Attendance</a>
+          <a href="{{ url_for("attendance") }}" class="navbar_links">Attendance</a>
         </li>
         <li class="navbar_item">
-          <a href="#" class="navbar_links">Webcam</a>
+          <a href="{{ url_for("webcam") }}" class="navbar_links">Webcam</a>
         </li>
         <li class="navbar_item">
-          <a href="#" class="navbar_links">About</a>
+          <a href="{{ url_for("about") }}" class="navbar_links">About</a>
         </li>
         <li class="navbar_item">
-          <a href="#" class="navbar_links">Exit</a>
+          <a href="{{ url_for("index") }}" class="navbar_links">Exit</a>
         </li>
       </ul>
     </div>
@@ -265,14 +265,14 @@
       <div class="card">
           <h2>Logged In Days</h2>
           <div class="logged-in-days">
-            <span>25</span>
+            <span>9</span>
           </div>
       </div>
 
       <div class="card">
           <h2>Days Missed</h2>
           <div class="missed-days">
-            <span>5</span>
+            <span>21</span>
           </div>
       </div>
     </div>

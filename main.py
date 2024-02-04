@@ -198,8 +198,21 @@ def signup():
     return render_template('signup.html')
 
 @app.route('/attendance')
+
 def attendance():
-    return render_template('attendance.html')
+    return render_template('attendance.html',p1 = "100", p2 = "100")
+
+@app.route('/card_id')
+def card_id():
+    return render_template('card_id.html')
+
+@app.route('/view')
+def view():
+    return render_template('view.html')
+
+@app.route('/view1')
+def view1():
+    return render_template('view1.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

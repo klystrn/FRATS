@@ -74,17 +74,25 @@
       <section class="main">
         <div class="main-top">
           <h1>Attendance</h1>
+<<<<<<< Updated upstream
         </div>
         <div class="users">
           <div class="card">
             <img src="{{ url_for('static', filename='img/pic1.png') }}">
+=======
+
+        </div>
+        <div class="users">
+          <div class="card">
+            <img src="../img/pic1.png">
+>>>>>>> Stashed changes
             <h4>Sam David</h4>
             <p>UI Designer</p>
             <div class="per">
               <table>
                 <tr>
-                  <td><span>85%</span></td>
-                  <td><span>87%</span></td>
+                  <td><span>{{p1}}%</span></td>
+                  <td><span>{{p2}}%</span></td>
                 </tr>
                 <tr>
                   <td>Month</td>
@@ -92,10 +100,17 @@
                 </tr>
               </table>
             </div>
+<<<<<<< Updated upstream
             <a href="{{ url_for("card_id") }}" ><button>Profile</button></a>
           </div>
           <div class="card">
             <img src="{{ url_for('static', filename='img/pic2.png') }}">
+=======
+            <a href="{{ url_for("card_id") }}"><button>Profile</button></a>
+          </div>
+          <div class="card">
+            <img src="../img/pic2.png">
+>>>>>>> Stashed changes
             <h4>Balbina kherr</h4>
             <p>Progammer</p>
             <div class="per">
@@ -110,11 +125,18 @@
                 </tr>
               </table>
             </div>
+<<<<<<< Updated upstream
             <a href="{{ url_for("card_id") }}" ><button>Profile</button></a>
           </div>
           <div class="card">
             <img src="{{ url_for('static', filename='img/pic3.png') }}">
             
+=======
+            <a href="{{ url_for("card_id") }}"><button>Profile</button></a>
+          </div>
+          <div class="card">
+            <img src="../img/pic3.png">
+>>>>>>> Stashed changes
             <h4>Badan John</h4>
             <p>tester</p>
             <div class="per">
@@ -129,11 +151,18 @@
                 </tr>
               </table>
             </div>
+<<<<<<< Updated upstream
             <a href="{{ url_for("card_id") }}" ><button>Profile</button></a>
             
           </div>
           <div class="card">
             <img src="{{ url_for('static', filename='img/pic4.png') }}">
+=======
+            <a href="{{ url_for("card_id") }}"><button>Profile</button></a>
+          </div>
+          <div class="card">
+            <img src="../img/pic4.png">
+>>>>>>> Stashed changes
             <h4>Salina micheal</h4>
             <p>Ui designer</p>
             <div class="per">
@@ -148,7 +177,11 @@
                 </tr>
               </table>
             </div>
+<<<<<<< Updated upstream
             <a href="{{ url_for("card_id") }}" ><button>Profile</button></a>
+=======
+            <a href="{{ url_for("card_id") }}"><button>Profile</button></a>
+>>>>>>> Stashed changes
           </div>
         </div>
         <section class="attendance">
@@ -174,7 +207,7 @@
                   <td>03-24-22</td>
                   <td>8:00AM</td>
                   <td>3:00PM</td>
-                  <td><button>View</button></td>
+                  <td><a href="{{ url_for("view") }}" ><button>View</button></a></td>
                 </tr>
                 <tr class="active">
                   <td>02</td>
@@ -183,7 +216,7 @@
                   <td>03-24-22</td>
                   <td>9:00AM</td>
                   <td>4:00PM</td>
-                  <td><button>View</button></td>
+                  <td><a href="{{ url_for("view1") }}" ><button>View</button></a></td>
                 </tr>
                 <tr>
                   <td>03</td>
@@ -192,7 +225,7 @@
                   <td>03-24-22</td>
                   <td>8:00AM</td>
                   <td>3:00PM</td>
-                  <td><button>View</button></td>
+                  <td><a href="{{ url_for("view") }}" ><button>View</button></a></td>
                 </tr>
                 <tr>
                   <td>04</td>
@@ -201,7 +234,7 @@
                   <td>03-24-22</td>
                   <td>8:00AM</td>
                   <td>3:00PM</td>
-                  <td><button>View</button></td>
+                  <td><a href="{{ url_for("view") }}" ><button>View</button></a></td>
                 </tr>
                 <tr >
                   <td>05</td>
@@ -210,7 +243,7 @@
                   <td>03-24-22</td>
                   <td>9:00AM</td>
                   <td>4:00PM</td>
-                  <td><button>View</button></td>
+                  <td><a href="{{ url_for("view") }}" ><button>View</button></a></td>
                 </tr>
                 <tr >
                   <td>06</td>
@@ -219,7 +252,7 @@
                   <td>03-24-22</td>
                   <td>9:00AM</td>
                   <td>4:00PM</td>
-                  <td><button>View</button></td>
+                  <td><a href="{{ url_for("view") }}" ><button>View</button></a></td>
                 </tr>
               </tbody>
             </table>

@@ -52,6 +52,7 @@ body {
     font-style: italic;
     padding: 0 2rem;
 
+
 }
 
 .fa-gem {
@@ -401,7 +402,10 @@ table thead tr {
 /*
 .table tbody tr:last-of-type {
     border-bottom: 2px solid #4AD489;
+<<<<<<< Updated upstream
 }
+=======
+>>>>>>> Stashed changes
 }*/
 
 .table button {

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Dashboard | By Code Info</title>
+  <link rel="stylesheet" href="../static/css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Add your CSS styles here */
+    body {
+      background: rgb(226, 226, 226);
+      font-family: "Poppins", sans-serif;
+    }
+    .navbar {
+      background: #131313;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .navbar_container {
+      display: flex;
+      justify-content: space-between;
+      height: 80px;
+      z-index: 1;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 50px;
+    }
+    #navbar_logo {
+      background-color: #ff8177;
+      background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%) !important;
+      background-size: 100%;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -moz-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 2.25rem;
+      font-weight: bolder;
+      font-style: italic;
+      padding: 0 2rem;
+    }
+    .navbar_menu {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      text-align: center;
+    }
+    .navbar_item {
+      height: 80px;
+    }
+    .navbar_links {
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 0 1rem;
+      height: 100%;
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      padding: 10px 20px;
+      height: 100%;
+      width: 100%;
+      border: none;
+      outline: none;
+      border-radius: 4px;
+      background: #f77062;
+      color: #fff;
+    }
+    .navbar_links:hover {
+      color: #f77062;
+      transition: all 0.3s ease;
+    }
+    @media screen and (max-width: 960px) {
+      .navbar_container {
+        display: flex;
+        justify-content: space-between;
+        height: 80px;
+        z-index: 1;
+        max-width: 1300px;
+        padding: 0;
+      }
+      .navbar_menu {
+        display: grid;
+        grid-template-columns: auto;
+        margin: 0;
+        width: 100%;
+        position: absolute;
+        top: -1000px;
+        opacity: 0;
+        transition: all 0.5s ease;
+        height: 50vh;
+        z-index: -1;
+        background: #131313;
+      }
+      .navbar_menu.active {
+        background: #131313;
+        top: 100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 99;
+        height: 50vh;
+        font-size: 1.6rem;
+      }
+      #navbar_logo {
+        padding-left: 25px;
+      }
+      .navbar_toggle .bar {
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background: #fff;
+      }
+      .navbar_item {
+        width: 100%;
+      }
+      .navbar_links {
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+      }
+      #mobile-menu {
+        position: absolute;
+        top: 20%;
+        right: 5%;
+        transform: translate(5%, 20%);
+      }
+      .navbar_btn {
+        padding-bottom: 2rem;
+      }
+      .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 80px;
+        margin: 0;
+      }
+      .navbar_toggle .bar {
+        display: block;
+        cursor: pointer;
+      }
+      #mobile-menu.is-active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      #mobile-menu.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      #mobile-menu.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
+    /* Main Section */
+    .main {
+      position: relative;
+      padding: 20px;
+      width: 100%;
+      text-align: center;
+    }
+    .main-top {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .main-top h1 {
+      margin: 0;
+    }
+    .card-container {
+      display: flex;
+      justify-content: center;
+    }
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      padding: 20px;
+      margin: 20px;
+      width: 250px;
+    }
+    .card h2 {
+      margin-bottom: 10px;
+    }
+    .total-days span {
+      color: #333;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .logged-in-days span {
+      color: #27ae60; /* Green color for logged-in days */
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .missed-days span {
+      color: #e74c3c; /* Red color for missed days */
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .attendance-list table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    .attendance-list th,
+    .attendance-list td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    /* Add more styles as needed */
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar_container">
+      <a href="#" id="navbar_logo">FRATS</a>
+      <div class="navbar_toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="navbar_menu">
+        <li class="navbar_item">
+          <a href="#" class="navbar_links">Attendance</a>
+        </li>
+        <li class="navbar_item">
+          <a href="#" class="navbar_links">Webcam</a>
+        </li>
+        <li class="navbar_item">
+          <a href="#" class="navbar_links">About</a>
+        </li>
+        <li class="navbar_item">
+          <a href="#" class="navbar_links">Exit</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <section class="main">
+    <div class="main-top">
+      <h1>Attendance Status</h1>
+    </div>
+    <div class="card-container">
+      <div class="card">
+          <h2>Total Days</h2>
+          <div class="total-days">
+            <span>30</span>
+          </div>
+      </div>
+
+      <div class="card">
+          <h2>Logged In Days</h2>
+          <div class="logged-in-days">
+            <span>25</span>
+          </div>
+      </div>
+
+      <div class="card">
+          <h2>Days Missed</h2>
+          <div class="missed-days">
+            <span>5</span>
+          </div>
+      </div>
+    </div>
+
+    <section class="attendance">
+      <div class="attendance-list">
+        <h1>Attendance List</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Depart</th>
+              <th>Date</th>
+              <th>Join Time</th>
+              <th>Logout Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01</td>
+              <td>Sam David</td>
+              <td>Design</td>
+              <td>03-24-22</td>
+              <td>8:00AM</td>
+              <td>3:00PM</td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>Sam David</td>
+                <td>Design</td>
+                <td>03-24-22</td>
+                <td>8:00AM</td>
+                <td>3:00PM</td>
+              </tr>
+
+              <tr>
+                <td>01</td>
+                <td>Sam David</td>
+                <td>Design</td>
+                <td>03-24-22</td>
+                <td>8:00AM</td>
+                <td>3:00PM</td>
+              </tr>
+
+              <tr>
+                <td>01</td>
+                <td>Sam David</td>
+                <td>Design</td>
+                <td>03-24-22</td>
+                <td>8:00AM</td>
+                <td>3:00PM</td>
+              </tr>
+
+              <tr>
+                <td>01</td>
+                <td>Sam David</td>
+                <td>Design</td>
+                <td>03-24-22</td>
+                <td>8:00AM</td>
+                <td>3:00PM</td>
+              </tr>
+
+              <tr>
+                <td>01</td>
+                <td>Sam David</td>
+                <td>Design</td>
+                <td>03-24-22</td>
+                <td>8:00AM</td>
+                <td>3:00PM</td>
+              </tr>
+
+              <tr>
+                <td>01</td>
+                <td>Sam David</td>
+                <td>Design</td>
+                <td>03-24-22</td>
+                <td>8:00AM</td>
+                <td>3:00PM</td>
+              </tr>
+
+              <tr>
+                <td>01</td>
+                <td>Sam David</td>
+                <td>Design</td>
+                <td>03-24-22</td>
+                <td>8:00AM</td>
+                <td>3:00PM</td>
+              </tr>
+  
+
+            
+            <!-- Add more attendance entries here -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+</body>
+</html>

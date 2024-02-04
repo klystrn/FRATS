@@ -13,7 +13,7 @@ body {
 
 .wrapper {
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: #ffb199;
@@ -90,7 +90,7 @@ body {
 }
 
 .front:after {
-    content: "DEVELOPER";
+    content: "UI DESIGNER";
     position: absolute;
     top: 125px;
     left: -15px;
@@ -162,9 +162,9 @@ body {
 
 
 .back h1 {
-    font-size: 24px;
+    font-size: 26px;
     /* Reduce font size */
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 
@@ -173,7 +173,7 @@ body {
 }
 
 .back p {
-    font-size: 10px;
+    font-size: 14px;
     /* Reduce font size */
 }
 
@@ -184,16 +184,18 @@ body {
 
 .back img {
     width: 80px;
+    margin-bottom: 10px;
 }
 
 .row {
     display: flex;
     align-items: center;
-    margin-top: 15px;
+    margin-top: 10px;
+    justify-content: space-between;
+
     flex: 1;
     /* Make the row class take up the remaining space */
 }
-
 
 .col {
     flex: 1;
@@ -207,28 +209,35 @@ body {
     font-size: 12px;
 }
 
-
 .col::after {
     content: ' ';
     width: 1px;
-    height: 8px;
-    background: #7800ad;
+    height: 15px;
+    background: #f77062;
     position: absolute;
     top: 3px;
     right: 0;
 }
-
 
 .col:last-child::after {
     display: none;
 }
 
 .col p {
-    margin-top: 3px;
+    margin-top: 5px;
+    font-size: 12px;
 }
 
+/* Add this to remove the margin from the last row */
+.row:last-child {
+    margin-bottom: 0;
+}
+
+
+
+
 .back button {
-    background: #7800ad;
+    background: #f77062;
     color: #fff;
     border: 0;
     outline: 0;
@@ -236,19 +245,19 @@ body {
     border-radius: 20px;
     font-size: 0.8rem;
     margin-right: 10px;
-    box-shadow: 0 5px 8px rgba(120, 0, 173, 0.2);
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
 }
 
-
-.back a {
-    width: 30px;
-    height: 30px;
+.back .fa-brands {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 3px;
+    color: #f77062;
 }
 
 

@@ -19,7 +19,6 @@
 
         }
     </style>
-    <!-- Navbar Section-->
     <nav class="navbar">
         <div class="navbar_container">
             <a href="{{ url_for("index") }}" id="navbar_logo">FRATS</a>
@@ -29,6 +28,9 @@
                 <span class="bar"></span>
             </div>
             <ul class="navbar_menu">
+                <li class="navbar item">
+                    <a href="{{ url_for("attendance") }}" class="navbar_links">Attendance</a>
+                </li>
                 <li class="navbar_item">
                     <a href="{{ url_for("webcam") }}" class="navbar_links">Webcam</a>
                 </li>
@@ -40,8 +42,8 @@
                 </li>
                 <!--<li class="navbar_item">
                     <a href="/" class="navbar_links">Contact</a>
-                </li>
-                <li class="navbar_btn"><a href="{{ url_for("login") }}" class="button">Login</a>
+                </li>-->
+                <!--<li class="navbar_btn"><a href="/" class="button">Sign Up</a>
                 </li>-->
             </ul>
         </div>

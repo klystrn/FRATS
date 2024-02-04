@@ -6,6 +6,4 @@
 -- FOREIGN KEY(ImageID) REFERENCES Image(ID)
 -- );
 
-SELECT * FROM RegUser;
-
-DELETE FROM RegUser WHERE RealName = "";
+SELECT * FROM attendance;

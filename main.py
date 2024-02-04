@@ -13,6 +13,7 @@ import random
 app = Flask(__name__)
 app.static_folder='static'
 
+
 app.config['SECRET_KEY'] = 'supersecretkey'
 app.config['UPLOAD_FOLDER'] = 'ImageTest'
 
@@ -162,6 +163,10 @@ def signup():
 @app.route('/attendance')
 def attendance():
     return render_template('attendance.html')
+
+@app.route('/card_id')
+def card_id():
+    return render_template('card_id.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

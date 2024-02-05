@@ -106,8 +106,10 @@ print(encoding2)
 print(image1)
 attendance_reult = compareFaces(image1, encoding2)
 if attendance_reult ==True:
-    cur.execute('SELECT RealName FROM RegUser WHERE UserName = ?', (UserName,))
-    RealName= cur.fetchone()[0]
+    cur.execute('SELECT RealName, Depart FROM RegUser WHERE UserName = ?', (UserName,))
+    record = cur.fetchone()
+    RealName= record[0]
+    Department = record[1]
     cur.execute("INSERT INTO attendance (UserName, RealName, Depart, Date, JoinTime, TimeLogout, Attendance)VALUES (?, ?, ?, ?, ?, ?, ?)",
-                        (UserName,RealName,'ICT',datetime.datetime.now().strftime('%Y-%m-%d'),JoinTime, datetime.datetime.now().strftime('%H:%M:%S'),attendance_reult,))
+                        (UserName,RealName,Department,datetime.datetime.now().strftime('%Y-%m-%d'),JoinTime, datetime.datetime.now().strftime('%H:%M:%S'),attendance_reult,))
     con.commit() 

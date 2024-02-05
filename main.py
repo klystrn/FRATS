@@ -91,6 +91,7 @@ def sp():
         password = request.form['npw']
         email = request.form['uemail']
         name = request.form['name']
+        depart = request.form['udepart']
 
         # Validate the user's input
         if not username or not password or not email:
@@ -100,7 +101,7 @@ def sp():
         # Create a new user account in the database
         try:
             cur = con.cursor()
-            cur.execute("INSERT INTO RegUser (UserName, Password, Email, RealName) VALUES (?, ?, ?, ?)", (username, password, email, name))
+            cur.execute("INSERT INTO RegUser (UserName, Password, Email, RealName, Depart) VALUES (?, ?, ?, ?, ?)", (username, password, email, name, depart))
             con.commit()
             #con.close()
             success = "Account created successfully."
@@ -163,19 +164,26 @@ def signup():
 @app.route('/attendance')
 def attendance():
     cur = con.cursor()
-    con.execute("SELECT COUNT(ID) FROM attendance WHERE RealName = 'Sam David'")
-    res = cur.fetchone()
-    con.commit()
-    return render_template('attendance.html',p1 = res, p2 = 100)
+    cur.execute("SELECT RealName, UserName FROM attendance WHERE RealName = 'Sam David'")
+    rows = cur.fetchall()
+    return render_template('attendance.html', row = rows[0])#'attendance.html', attendance_rows=rows)
 
 @app.route('/card_id')
 def card_id():
     return render_template('card_id.html')
- 
+'''
 @app.route('/view')
 def view():
     return render_template('view.html')
- 
+'''
+@app.route('/view')
+def view():
+    cur = con.cursor()
+    cur.execute("SELECT * FROM attendance WHERE RealName = 'Sam David'")
+    rows = cur.fetchall()
+    print(rows)  # For debugging
+    return render_template('view.html', attendance_rows=rows)
+
 @app.route('/view1')
 def view1():
     return render_template('view1.html')
